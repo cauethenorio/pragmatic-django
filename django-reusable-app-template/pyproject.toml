@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "reusable-app"
+version = "0.1.0"
+description = ""
+authors = ["Cauê Thenório <caue@thenorio.com.br>"]
+readme = "README.md"
+packages = [{include = "reusable_app", from = "src"}]
+
+[tool.poetry.dependencies]
+python = "^3.9"
+django = ">=4.1"
+
+
+[tool.poetry.group.dev.dependencies]
+pdbpp = "^0.10.3"
+pytest = "^7.4.0"
+pytest-django = "^4.5.2"
+pytest-factoryboy = "^2.5.1"
+tox = "^4.6.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tests.settings"
+# https://pytest-django.readthedocs.io/en/latest/managing_python_path.html#example-project-with-src-layout
+pythonpath = "."
+#python_files = ["tests.py", "test_*.py", "*_tests.py"]
+addopts = ["--pdb"]
